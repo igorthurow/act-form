@@ -1,8 +1,9 @@
 import React from 'react'
-import './Form.scss'
 import { TextBlock } from '../components/Title'
 import { Button } from '../components/Button'
-import i18n from '../utils/i18n'
+import { Items } from '../components/Items'
+import { getLanguage, itemsList } from '../utils'
+import './Form.scss'
 
 class Form extends React.Component {
   state = {}
@@ -18,7 +19,7 @@ class Form extends React.Component {
         servicesBlock: { title: servicesTitle },
         itensBlock: { title: itensTitle }
       }
-    } = i18n('pt-BR')
+    } = getLanguage('pt-BR')
 
     return (
       <div className={Form.displayName}>
@@ -33,6 +34,8 @@ class Form extends React.Component {
 
         <div>
           <TextBlock text={itensTitle} />
+
+          <Items itemsList={itemsList} />
         </div>
       </div>
     )

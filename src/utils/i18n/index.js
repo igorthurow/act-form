@@ -1,11 +1,7 @@
 import { ptBR } from './pt-BR'
+import { getLanguage } from './getLanguage'
 
-const i18n = lang => {
-  switch (lang) {
-    case 'pt-BR':
-    default:
-      return ptBR
-  }
+export {
+  ptBR,
+  getLanguage
 }
-
-export default i18n
