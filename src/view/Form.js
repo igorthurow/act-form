@@ -2,7 +2,7 @@ import React from 'react'
 import './Form.scss'
 import { TextBlock } from '../components/Title'
 import { Button } from '../components/Button'
-import { texts } from '../utils/texts'
+import i18n from '../utils/i18n'
 
 class Form extends React.Component {
   state = {}
@@ -18,7 +18,7 @@ class Form extends React.Component {
         servicesBlock: { title: servicesTitle },
         itensBlock: { title: itensTitle }
       }
-    } = texts('pt-BR')
+    } = i18n('pt-BR')
 
     return (
       <div className={Form.displayName}>
