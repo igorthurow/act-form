@@ -1,24 +1,37 @@
 import React from 'react'
-import { TextBlock } from '../components/Title'
-import { Button } from '../components/Button'
-import { Items } from '../components/Items'
+import {
+  TextBlock,
+  Button,
+  Items,
+  Sofa
+} from '../components'
 import { getLanguage, itemsList } from '../utils'
 import './Form.scss'
 
 class Form extends React.Component {
-  state = {}
+  state = {
+    sofa: {
+      notSetView: {
+        sofaItems: [1]
+      }
+    }
+  }
 
   render() {
     const {
-      services: { impermeabilization, higienization },
-      titles: {
-        mainBlock: {
-          title: mainTitle,
-          subtitle: mainSubtitle
-        },
-        servicesBlock: { title: servicesTitle },
-        itensBlock: { title: itensTitle }
+      sofa: {
+        notSetView: { sofaItems }
       }
+    } = this.state
+
+    const {
+      servicesType: { impermeabilization, higienization },
+      mainBlock: {
+        title: mainTitle,
+        subtitle: mainSubtitle
+      },
+      servicesBlock: { title: servicesTitle },
+      itemsBlock: { title: itemsTitle }
     } = getLanguage('pt-BR')
 
     return (
@@ -28,15 +41,22 @@ class Form extends React.Component {
         <TextBlock text={servicesTitle} />
 
         <div>
-          <Button text={impermeabilization} />
-          <Button text={higienization} />
+          <Button>{impermeabilization}</Button>
+          <Button>{higienization}</Button>
         </div>
 
         <div>
-          <TextBlock text={itensTitle} />
+          <TextBlock text={itemsTitle} />
 
           <Items itemsList={itemsList} />
         </div>
+
+        <Sofa
+          items={sofaItems}
+          onChangePlaces={sofaItems =>
+            this.setState({ sofaItems })
+          }
+        />
       </div>
     )
   }
