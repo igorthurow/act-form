@@ -4,6 +4,9 @@ const onChangeCounter = ({
   newValue: { value, index } = {},
   callback
 }) => {
+  if (!counterLength && (!value || index === undefined))
+    return false
+
   let newValue = [...oldValue]
 
   if (counterLength) {
@@ -12,7 +15,7 @@ const onChangeCounter = ({
       : newValue.pop()
   }
 
-  if (index !== undefined) newValue[index] = value
+  newValue[index] = value
 
   return callback(newValue)
 }

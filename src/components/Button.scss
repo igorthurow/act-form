@@ -1,0 +1,23 @@
+@import './utils.scss';
+
+.Button {
+  border: 1px solid $main;
+  color: $main;
+  background-color: $nice-white;
+  font-size: $defaultSize;
+  min-width: 140px;
+  height: 38px;
+  cursor: pointer;
+  transition: $defaultTransition;
+
+  &.big {
+    min-width: 248px;
+    height: 52px;
+    font-size: $bigSize;
+  }
+
+  &:hover {
+    background-color: $main;
+    color: $nice-white;
+  }
+}

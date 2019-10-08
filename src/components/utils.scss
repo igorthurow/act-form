@@ -1,11 +1,13 @@
 $main: #11427A;
 $alt: #a7a7a7;
+$nice-white: #fff;
 
-@mixin titleSize {
-  font-size: 28px;
+$bigSize: 28px;
+$defaultSize: 20px;
+
+$defaultTransition: .25s;
+
+@mixin titleTextLayout {
+  font-size: $bigSize;
   font-weight: bold;
-}
-
-@mixin defaultSize {
-  font-size: 20px;
 }

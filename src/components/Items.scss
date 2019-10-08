@@ -1,0 +1,10 @@
+.Items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1366px;
+
+  >.Item {
+    margin: 10px;
+  }
+}

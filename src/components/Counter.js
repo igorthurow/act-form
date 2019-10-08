@@ -3,8 +3,7 @@ import { Button } from '../components'
 
 const Counter = ({ onChange, children }) => {
   const onIncrease = () => onChange(children + 1)
-  const onDecrease = () =>
-    onChange(children - 1 ? children - 1 : false)
+  const onDecrease = () => onChange(children - 1)
 
   return (
     <div className='Counter'>
