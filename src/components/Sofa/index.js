@@ -12,7 +12,7 @@ const {
   }
 } = getLanguage('pt-BR')
 
-const Sofa = ({ isSet = true, items, onChangePlaces }) => {
+const Sofa = ({ isSet, items, onChangePlaces }) => {
   return (
     <div className={Sofa.displayName}>
       <TextBlock title={Sofa.displayName} text={text} />

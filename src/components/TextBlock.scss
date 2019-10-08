@@ -1,0 +1,23 @@
+@import './utils.scss';
+
+.TextBlock {
+  text-align: center;
+
+  &__title {
+    &--main {
+      @include titleSize;
+      color: $main;
+      margin: 10px 0;
+    }
+  }
+
+  &__text {
+    @include defaultSize;
+    color: $alt;
+
+    &--alt {
+      @include defaultSize;
+      color: $main;
+    }
+  }
+}

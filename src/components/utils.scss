@@ -1,0 +1,11 @@
+$main: #11427A;
+$alt: #a7a7a7;
+
+@mixin titleSize {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+@mixin defaultSize {
+  font-size: 20px;
+}

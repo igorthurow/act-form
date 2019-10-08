@@ -17,6 +17,15 @@ class Form extends React.Component {
     }
   }
 
+  onChangePlaces = sofaItems =>
+    this.setState({
+      sofa: {
+        notSetView: {
+          sofaItems
+        }
+      }
+    })
+
   render() {
     const {
       sofa: {
@@ -36,9 +45,16 @@ class Form extends React.Component {
 
     return (
       <div className={Form.displayName}>
-        <TextBlock title={mainTitle} text={mainSubtitle} />
+        <TextBlock
+          config={{ isPageTitle: true }}
+          title={mainTitle}
+          text={mainSubtitle}
+        />
 
-        <TextBlock text={servicesTitle} />
+        <TextBlock
+          config={{ textAlt: true }}
+          text={servicesTitle}
+        />
 
         <div>
           <Button>{impermeabilization}</Button>
@@ -53,13 +69,13 @@ class Form extends React.Component {
 
         <Sofa
           items={sofaItems}
-          onChangePlaces={sofaItems =>
-            this.setState({ sofaItems })
-          }
+          onChangePlaces={this.onChangePlaces}
         />
       </div>
     )
   }
 }
+
+Form.displayName = 'Form'
 
 export default Form
