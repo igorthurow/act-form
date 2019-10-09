@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../components'
+import { Button } from '../index'
 
 const Counter = ({ onChange, children }) => {
   const onIncrease = () => onChange(children + 1)

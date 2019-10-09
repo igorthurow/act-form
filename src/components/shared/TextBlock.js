@@ -2,6 +2,7 @@ import React from 'react'
 import './TextBlock.scss'
 
 const TextBlock = ({
+  className = '',
   title,
   text,
   config: { isPageTitle, textAlt } = {}
@@ -38,7 +39,7 @@ const TextBlock = ({
     )
 
   return (
-    <div className={displayName}>
+    <div className={`${displayName} ${className}`}>
       {renderTitle()}
 
       {renderText()}

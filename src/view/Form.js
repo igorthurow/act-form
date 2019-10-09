@@ -1,16 +1,14 @@
 import React from 'react'
-import {
-  TextBlock,
-  Button,
-  Items,
-  Sofa
-} from '../components'
+import { TextBlock, Button, Items } from '../components'
 import { getLanguage, itemsList } from '../utils'
+import { itemsOptionsViews } from '../components/handlers'
 import './Form.scss'
 
 class Form extends React.Component {
   state = {
+    activeItem: 'sofa',
     sofa: {
+      isSet: false,
       notSetView: {
         sofaItems: [1]
       }
@@ -20,19 +18,44 @@ class Form extends React.Component {
   onChangePlaces = sofaItems =>
     this.setState({
       sofa: {
+        ...this.state.sofa,
         notSetView: {
           sofaItems
         }
       }
     })
 
-  render() {
-    const {
+  onChangeSet = isSet =>
+    this.setState({
       sofa: {
+        ...this.state.sofa,
+        isSet
+      }
+    })
+
+  renderOptions = () => {
+    const {
+      activeItem,
+      sofa: {
+        isSet,
         notSetView: { sofaItems }
       }
     } = this.state
 
+    const itemView = itemsOptionsViews(activeItem)
+
+    switch (activeItem) {
+      case 'sofa':
+        return itemView({
+          isSet,
+          items: sofaItems,
+          onChangePlaces: this.onChangePlaces,
+          onChangeSet: this.onChangeSet
+        })
+    }
+  }
+
+  render() {
     const {
       servicesType: { impermeabilization, higienization },
       mainBlock: {
@@ -46,31 +69,45 @@ class Form extends React.Component {
     return (
       <div className={Form.displayName}>
         <TextBlock
+          className='headline'
           config={{ isPageTitle: true }}
           title={mainTitle}
           text={mainSubtitle}
         />
 
-        <TextBlock
-          config={{ textAlt: true }}
-          text={servicesTitle}
-        />
-
-        <div>
-          <Button>{impermeabilization}</Button>
-          <Button>{higienization}</Button>
+        <div className='services'>
+          <TextBlock
+            config={{ textAlt: true }}
+            text={servicesTitle}
+          />
+          <div className='services__options'>
+            <Button>{impermeabilization}</Button>
+            <Button>{higienization}</Button>
+          </div>
         </div>
 
-        <div>
-          <TextBlock text={itemsTitle} />
+        <div className='items'>
+          <TextBlock
+            config={{
+              textAlt: true
+            }}
+            text={itemsTitle}
+          />
 
-          <Items itemsList={itemsList} />
+          <Items
+            activeItem={this.state.activeItem}
+            onClick={activeItem =>
+              this.setState({
+                activeItem
+              })
+            }
+            itemsList={itemsList}
+          />
         </div>
 
-        <Sofa
-          items={sofaItems}
-          onChangePlaces={this.onChangePlaces}
-        />
+        <div className='options'>
+          {this.renderOptions()}
+        </div>
       </div>
     )
   }

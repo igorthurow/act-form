@@ -2,12 +2,12 @@ $main: #11427A;
 $alt: #a7a7a7;
 $nice-white: #fff;
 
-$bigSize: 28px;
-$defaultSize: 20px;
+$bigSize: 32px;
+$defaultSize: 22px;
 
 $defaultTransition: .25s;
 
 @mixin titleTextLayout {
   font-size: $bigSize;
-  font-weight: bold;
+  font-weight: 600;
 }

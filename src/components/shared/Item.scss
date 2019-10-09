@@ -1,4 +1,4 @@
-@import './utils.scss';
+@import '../utils.scss';
 
 .Item {
   min-width: 15%;
@@ -11,7 +11,8 @@
   cursor: pointer;
   transition: $defaultTransition;
 
-  &:hover {
+  &:hover,
+  &.actived {
     background-color: $main;
     color: $nice-white;
   }

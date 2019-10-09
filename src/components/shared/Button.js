@@ -4,12 +4,12 @@ import './Button.scss'
 const Button = ({
   onClick,
   children,
-  isBigLayout = false
+  isActive = false
 }) => (
   <button
     onClick={onClick}
-    className={`${Button.displayName}${
-      isBigLayout ? 'big' : ''
+    className={`${Button.displayName} ${
+      isActive ? 'active' : ''
     }`}
   >
     {children}
