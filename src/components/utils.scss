@@ -11,3 +11,9 @@ $defaultTransition: .25s;
   font-size: $bigSize;
   font-weight: 600;
 }
+
+@mixin desktopSize {
+  @media (min-width: 769px) {
+    @content
+  }
+}

@@ -1,11 +1,16 @@
 import React from 'react'
-import { TextBlock, Button, Items } from '../components'
+import {
+  TextBlock,
+  Button,
+  Items,
+  ItemView
+} from '../components'
 import { getLanguage, itemsList } from '../utils'
-import { itemsOptionsViews } from '../components/handlers'
 import './Form.scss'
 
 class Form extends React.Component {
   state = {
+    isImpermeabilization: true,
     activeItem: 'sofa',
     sofa: {
       isSet: false,
@@ -15,44 +20,53 @@ class Form extends React.Component {
     }
   }
 
-  onChangePlaces = sofaItems =>
-    this.setState({
-      sofa: {
-        ...this.state.sofa,
-        notSetView: {
-          sofaItems
-        }
-      }
-    })
-
-  onChangeSet = isSet =>
-    this.setState({
-      sofa: {
-        ...this.state.sofa,
-        isSet
-      }
-    })
-
   renderOptions = () => {
-    const {
-      activeItem,
-      sofa: {
-        isSet,
-        notSetView: { sofaItems }
-      }
-    } = this.state
+    const { activeItem: itemName } = this.state
 
-    const itemView = itemsOptionsViews(activeItem)
-
-    switch (activeItem) {
-      case 'sofa':
-        return itemView({
-          isSet,
-          items: sofaItems,
-          onChangePlaces: this.onChangePlaces,
-          onChangeSet: this.onChangeSet
-        })
+    let props = {
+      itemName
     }
+
+    switch (itemName) {
+      default:
+      case 'sofa':
+        const onChangePlaces = (sofaItems) =>
+          this.setState({
+            sofa: {
+              ...this.state.sofa,
+              notSetView: {
+                sofaItems
+              }
+            }
+          })
+
+        const onChangeSet = (isSet) =>
+          this.setState({
+            sofa: {
+              ...this.state.sofa,
+              isSet
+            }
+          })
+
+        const {
+          sofa: {
+            isSet,
+            notSetView: { sofaItems }
+          }
+        } = this.state
+
+        props = {
+          ...props,
+          items: sofaItems,
+          onChangePlaces,
+          onChangeSet,
+          isSet
+        }
+
+        break
+    }
+
+    return <ItemView {...props} />
   }
 
   render() {
@@ -64,7 +78,9 @@ class Form extends React.Component {
       },
       servicesBlock: { title: servicesTitle },
       itemsBlock: { title: itemsTitle }
-    } = getLanguage('pt-BR')
+		} = getLanguage('pt-BR')
+		
+		const { isImpermeabilization } = this.state
 
     return (
       <div className={Form.displayName}>
@@ -81,7 +97,9 @@ class Form extends React.Component {
             text={servicesTitle}
           />
           <div className='services__options'>
-            <Button>{impermeabilization}</Button>
+            <Button isActive={isImpermeabilization}>
+              {impermeabilization}
+            </Button>
             <Button>{higienization}</Button>
           </div>
         </div>
@@ -96,7 +114,7 @@ class Form extends React.Component {
 
           <Items
             activeItem={this.state.activeItem}
-            onClick={activeItem =>
+            onClick={(activeItem) =>
               this.setState({
                 activeItem
               })

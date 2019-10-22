@@ -13,4 +13,8 @@
     background-color: $main;
     color: $nice-white;
   }
+
+  &:active, &:focus {
+    outline: none;
+  }
 }

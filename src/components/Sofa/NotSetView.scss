@@ -1,0 +1,38 @@
+@import '../utils';
+
+.NotSetView {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  @include desktopSize {
+    flex-direction: row;
+  }
+
+  >div {
+    margin-bottom: 10px;
+    justify-content: space-between;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+
+    @include desktopSize {
+      width: auto;
+    }
+
+    >.TextBlock {
+      padding-right: 10px;
+    }
+
+    >div>.Counter {
+      margin-bottom: 10px;
+    }
+
+
+    @include desktopSize {
+      &:first-child {
+        margin-right: 50px;
+      }
+    }
+  }
+}

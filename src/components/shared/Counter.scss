@@ -1,0 +1,27 @@
+@import "../utils.scss";
+
+.Counter {
+  display: flex;
+  border: 1px solid $main;
+
+  >.Button {
+    border: none;
+    background-color: $main;
+    color: $nice-white;
+    width: 40px;
+
+    &:hover {
+      color: $main;
+      background-color: $nice-white;
+    }
+  }
+
+  >span {
+    border-right: 1px solid $main;
+    border-left: 1px solid $main;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

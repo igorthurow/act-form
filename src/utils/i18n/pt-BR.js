@@ -24,7 +24,7 @@ const ptBR = {
       },
       sofa: {
         title: 'sofa',
-        text: 'Você possui um conjunto?'
+        text: ''
       },
       carro: {
         title: 'carro',

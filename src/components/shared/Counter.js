@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '../index'
+import './Counter.scss'
 
 const Counter = ({ onChange, children }) => {
   const onIncrease = () => onChange(children + 1)
@@ -10,7 +11,7 @@ const Counter = ({ onChange, children }) => {
       <Button disabled={!children} onClick={onDecrease}>
         -
       </Button>
-      {children}
+      <span>{children}</span>
       <Button onClick={onIncrease}>+</Button>
     </div>
   )

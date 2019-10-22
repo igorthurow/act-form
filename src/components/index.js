@@ -4,6 +4,8 @@ import { Item } from './shared/Item'
 import { Items } from './shared/Items'
 import { TextBlock } from './shared/TextBlock'
 import { SofaStructure } from './Sofa/SofaStructure'
+import { SofaView } from './Sofa/SofaView'
+import { ItemView } from './shared/ItemView'
 
 export {
   Button,
@@ -12,4 +14,6 @@ export {
   Items,
   TextBlock,
   SofaStructure,
+  SofaView,
+  ItemView
 }
